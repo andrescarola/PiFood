@@ -23,11 +23,9 @@ module.exports = (sequelize) => {
     },
     healthScore: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     instructions: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     created: {
       type: DataTypes.BOOLEAN,
