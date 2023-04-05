@@ -1,5 +1,17 @@
-const getRecipesHandler = (req, res) => {
-    res.send('NIY: ESTA RUTA TRAE LA INFO TODAS LAS RECETAS O POR QUERY')
+const getRecipesHandler = async (req, res) => {
+    const { name } = req.query;
+
+    try {
+        const results = name
+            ? await searchRecipeByName(name)
+            : await getAllRecipes();
+
+            res.status(200).json(results);
+
+    } catch (error) {
+
+        res.status(400).json({error: error.message});
+    }
 };
 
 const getRecipeHandler = (req, res) => {
