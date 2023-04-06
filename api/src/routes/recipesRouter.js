@@ -5,7 +5,7 @@ const recipesRouter = Router();
 
 recipesRouter.get('/', getRecipesHandler);
 
-recipesRouter.get('/:idRecipe', getRecipeHandler);
+recipesRouter.get('/:id', getRecipeHandler);
 
 recipesRouter.post('/', createRecipeHandler);
 
