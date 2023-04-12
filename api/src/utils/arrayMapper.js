@@ -7,6 +7,7 @@ const arrayMapper = (arr) =>
             summary: elem.summary,
             healthScore: elem.healthScore,
             instructions: elem.analyzedInstructions,
+            diets: elem.diets,
             created: false,
         }
     });

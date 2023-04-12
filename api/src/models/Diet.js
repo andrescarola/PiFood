@@ -5,13 +5,15 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('diet', {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4
+      autoIncrement: true
     },
     name: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false
     }
-  }, {timestamps: false });
+  }, { timestamps: false });
 };
