@@ -24,12 +24,14 @@ const getRecipeHandler = async (req, res) => {
     }
 };
 
-const createRecipeHandler = (req, res) => {
-    const { title, image, summary, healthScore, instructions } = req.body
+const createRecipeHandler = async (req, res) => {
+    const { title, image, summary, healthScore, instructions, created, diets } = req.body
 
     try {
-        const newRecipe = createRecipe(title, image, summary, healthScore, instructions);
-        res.status(200).json(newRecipe)
+        if(!title|| !summary || !image) {
+        res.status(400).send('title, summary and image are mandatory')
+    } else {const newRecipe = await createRecipe(title, image, summary, healthScore, instructions, created, diets);
+        res.status(200).json(newRecipe)}
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
