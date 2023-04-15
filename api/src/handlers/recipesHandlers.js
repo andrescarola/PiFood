@@ -12,18 +12,6 @@ const getRecipesHandler = async (req, res) => {
     }
 };
 
-// const getRecipeHandler = async (req, res) => {
-//     const { id } = req.params;
-//     const location = isNaN(id) ? 'db' : 'api';
-
-//     try {
-//         const recipe = await getRecipeById(id, location);
-//         res.status(200).json(recipe)
-//     } catch (error) {
-//         res.status(400).json({ error: error.message })
-//     }
-// };
-
 const getRecipeHandler = async (req, res) => {
     const { id } = req.params;
 
