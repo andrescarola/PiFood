@@ -22,7 +22,15 @@ const searchRecipeByName = async (title) => {
 };
 
 const getAllRecipes = async () => {
-    const databaseRecipes = await Recipe.findAll();
+    const databaseRecipes = await Recipe.findAll({
+        include: {
+            model: Diet,
+            attributes: ['name'],
+            through: {
+                attributes: [], // comprobación
+            }
+        }
+    });
 
     const apiRecipesImport = (
         await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_ONE}&addRecipeInformation=true&instructionsRequired=true&number=100`)
@@ -33,44 +41,21 @@ const getAllRecipes = async () => {
     return [...databaseRecipes, ...apiRecipes];
 };
 
-const getRecipeById = async (id, location) => {
-    if (location === 'api') {
-        const apiSearch = (await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY_ONE}`)
-        ).data;
-
-        const apiRecipe = {
-            id: apiSearch.id,
-            title: apiSearch.title,
-            image: apiSearch.image,
-            summary: apiSearch.summary,
-            healthScore: apiSearch.healthScore,
-            instructions: apiSearch.analyzedInstructions,
-            diets: apiSearch.diets,
-            created: false,
-        }
-        return apiRecipe;
-    } else {
-        await Recipe.findByPk(id), {
-            include: {
-                model: Diet,
-                attributes: ['name'],
-                through: {
-                    attributes: [], // comprobación
-                }
-            }
-        }
-    }
+const getRecipeById = async (id) => {
+    const allRecipes = await getAllRecipes()
+    const recipe = allRecipes.filter(el => el.id == id)
+    return recipe;
 };
 
 const createRecipe = async (title, image, summary, healthScore, instructions, created, diets) => {
 
-    const newRecipe = await Recipe.create({ 
-        title, 
-        image, 
-        summary, 
-        healthScore, 
+    const newRecipe = await Recipe.create({
+        title,
+        image,
+        summary,
+        healthScore,
         instructions,
-        created 
+        created
     });
 
     const dietsDb = await Diet.findAll({
