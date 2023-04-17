@@ -9,7 +9,8 @@ const rootReducer = (state=initialState, action) => {
 
         case GET_RECIPES:
             return {
-                ...state, recipes: action.payload
+                ...state, 
+                recipes: action.payload
             };
             
         default:

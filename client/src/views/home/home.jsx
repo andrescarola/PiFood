@@ -1,10 +1,11 @@
+import React from 'react';
 import RecipesContainer from '../../components/recipesContainer/recipesContainer';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getRecipes } from '../../redux/actions/actions';
 
-const Home = () => {
 
+const Home = () => {
 const dispatch = useDispatch();
 
 useEffect(()=>{

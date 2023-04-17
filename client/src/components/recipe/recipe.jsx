@@ -1,10 +1,11 @@
+import React from 'react';
 import style from './recipe.module.css';
 
 const Recipe = (props) => {
     return(
         <div className={style.recipe}>
-            <p>Title:{props.title}</p>
-            <p>Image:{props.image}</p>
+            <p>{props.title}</p>
+            <img src={props.image} alt='not found' />
             {/* <p>Diets:{props.diets.name}</p> */}
         </div>
     )
