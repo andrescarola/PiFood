@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from 'axios';
 
 const Form = () => {
   const [form, setForm] = useState({
@@ -8,7 +9,7 @@ const Form = () => {
     healthScore: "",
     instructions: "",
     image: "",
-    diets: "",
+    diets: [],
   });
 
   const [errors, setErrors] = useState({
@@ -17,14 +18,14 @@ const Form = () => {
     healthScore: "",
     instructions: "",
     image: "",
-    diets: "",
+    diets: [],
   });
 
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
 
-    validate({...form, [property]: value});
+    // validate({...form, [property]: value});
     
     setForm({...form, [property]: value});
   };
@@ -33,8 +34,18 @@ const Form = () => {
 
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+     const response = axios.post('http://localhost:3001/recipes', form)
+     .then(res => alert(res))
+     .catch(err => alert(err))
+
+     console.log(response);
+  };
+
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div>
         <label>Title: </label>
         <input type="text" value={form.title} onChange={changeHandler} name="title" />
@@ -64,6 +75,8 @@ const Form = () => {
         <label>Diets: </label>
         <input type="text" value={form.diets} onChange={changeHandler} name="diets" />
       </div>
+
+      <button type='submit'>SUBMIT</button>
     </form>
   );
 };

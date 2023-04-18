@@ -30,7 +30,7 @@ const createRecipeHandler = async (req, res) => {
         if(!title|| !summary || !image) {
         res.status(400).send('title, summary and image are mandatory')
     } else {const newRecipe = await createRecipe(title, image, summary, healthScore, instructions, created, diets);
-        res.status(200).json(newRecipe)}
+        res.status(200).send('Congratulations! Your recipe has been created!')}
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
