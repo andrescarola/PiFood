@@ -18,7 +18,7 @@ const RecipesContainer = () => {
   const pager = (pageNumber) => {
     setCurrentPage(pageNumber)
   };
-
+  
   return (
     <div className={style.recipesContainer}>
       {currentRecipes.map(r => {
@@ -35,7 +35,6 @@ const RecipesContainer = () => {
         allRecipes={recipes.length}
         pager={pager}
       />
-
     </div>
   )
 };
