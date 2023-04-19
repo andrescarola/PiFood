@@ -1,4 +1,4 @@
-import { FILTER_RECIPES_BY_DIETS, FILTER_RECIPES_BY_ORIGIN, GET_RECIPES, SORT_BY_TITLE } from "../actions/actions";
+import { FILTER_RECIPES_BY_DIETS, FILTER_RECIPES_BY_ORIGIN, GET_RECIPES, SORT_BY_HEALTHSCORE, SORT_BY_TITLE } from "../actions/actions";
 
 const initialState = {
     recipes: [],
@@ -34,12 +34,23 @@ const rootReducer = (state = initialState, action) => {
         case SORT_BY_TITLE:
 
             const sort = action.payload === 'ascendent'
-            ? [...state.recipes].sort((a, b) => a.title.localeCompare(b.title)) :
-            [...state.recipes].sort((a, b) => b.title.localeCompare(a.title))
-            
+                ? [...state.recipes].sort((a, b) => a.title.localeCompare(b.title)) :
+                [...state.recipes].sort((a, b) => b.title.localeCompare(a.title))
+
             return {
                 ...state,
                 recipes: sort
+            }
+
+        case SORT_BY_HEALTHSCORE:
+
+            const sortByHs = action.payload === 'ascendent'
+                ? [...state.recipes].sort((a, b) => a.healthScore - b.healthScore) :
+                [...state.recipes].sort((a, b) => b.healthScore - a.healthScore)
+
+            return {
+                ...state,
+                recipes: sortByHs
             }
 
 

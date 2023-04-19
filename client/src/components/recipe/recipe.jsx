@@ -6,6 +6,7 @@ const Recipe = (props) => {
         <div className={style.recipe}>
             <p>{props.title}</p>
             <img src={props.image} alt='not found' />
+            <p>Health Score: {props.healthScore}</p>
             {/* <p>Diets:{props.diets.name}</p> */}
         </div>
     )
