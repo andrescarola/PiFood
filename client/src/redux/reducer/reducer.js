@@ -1,4 +1,4 @@
-import { FILTER_RECIPES_BY_DIETS, FILTER_RECIPES_BY_ORIGIN, GET_RECIPES, SORT_BY_HEALTHSCORE, SORT_BY_TITLE } from "../actions/actions";
+import { FILTER_RECIPES_BY_DIETS, FILTER_RECIPES_BY_ORIGIN, GET_RECIPES, SORT_BY_HEALTHSCORE, SORT_BY_TITLE, GET_RECIPES_BY_TITLE } from "../actions/actions";
 
 const initialState = {
     recipes: [],
@@ -14,6 +14,13 @@ const rootReducer = (state = initialState, action) => {
                 recipes: action.payload,
                 allRecipes: action.payload
             };
+
+        case GET_RECIPES_BY_TITLE:
+            return {
+                ...state,
+                recipes: action.payload
+            };
+
 
         case FILTER_RECIPES_BY_ORIGIN:
             const allRecipes = state.allRecipes;

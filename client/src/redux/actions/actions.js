@@ -1,20 +1,56 @@
 import axios from 'axios';
 
 export const GET_RECIPES = 'GET_RECIPES';
+export const GET_RECIPES_BY_TITLE = 'GET_RECIPES_BY_TITLE';
+export const GET_DIETS = 'GET_DIETS';
 export const FILTER_RECIPES_BY_DIETS = 'FILTER_RECIPES_BY_DIETS';
 export const FILTER_RECIPES_BY_ORIGIN= 'FILTER_RECIPES_BY_ORIGIN';
 export const SORT_BY_TITLE = 'SORT_BY_TITLE';
-export const SORT_BY_HEALTHSCORE = 'SORT_BY_HEALTHSCORE'
+export const SORT_BY_HEALTHSCORE = 'SORT_BY_HEALTHSCORE';
 
 export const getRecipes = () => {
     return async function (dispatch) {
+        try {
             const recipes = await axios.get('http://localhost:3001/recipes');
             dispatch({
                 type: GET_RECIPES,
                 payload: recipes.data
-            });  
+            });   
+        } catch (error) {
+            console.log(error);
+        }
     }
 };
+
+export const getRecipesByTitle = (title) => {
+    return async function (dispatch) {
+        try {
+            const recipes = await axios.get(`http://localhost:3001/recipes?title=${title}`);
+            dispatch({
+                type: GET_DIETS,
+                payload: recipes.data
+            });       
+        } catch (error) {
+            console.log(error);
+        }
+    }
+};
+
+export const getDiets = () => {
+    return async function (dispatch) {
+        try {
+            const diets = await axios.get('http://localhost:3001/diets');
+            dispatch({
+                type: GET_DIETS,
+                payload: diets.data
+            });   
+        } catch (error) {
+            console.log(error);
+        }
+    }
+};
+
+
 
 export const filterRecipesByDiets = (payload) => {
     return {
@@ -43,3 +79,4 @@ export const sortByHealthScore = (payload) => {
         payload
     }
 };
+

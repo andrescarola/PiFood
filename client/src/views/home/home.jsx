@@ -3,6 +3,7 @@ import RecipesContainer from '../../components/recipesContainer/recipesContainer
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getRecipes } from '../../redux/actions/actions';
+import SearchBar from '../../components/searchBar/searchBar';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Home = () => {
     return (
         <div>
             <h1>Esta es la vista Home</h1>
+            <SearchBar />
             <RecipesContainer />
         </div>
     )
