@@ -3,7 +3,7 @@ import style from './recipesContainer.module.css';
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Pager from "../pager/pager";
-import { getRecipes, filterRecipesByOrigin, sortByTitle, sortByHealthScore} from '../../redux/actions/actions';
+import { getRecipes, filterRecipesByOrigin, sortByTitle, sortByHealthScore } from '../../redux/actions/actions';
 
 const RecipesContainer = () => {
 
@@ -25,7 +25,7 @@ const RecipesContainer = () => {
     dispatch(filterRecipesByOrigin(e.target.value))
     setCurrentPage(1)
   };
-  
+
   const sortByTitleHandler = (e) => {
     dispatch(sortByTitle(e.target.value))
     setCurrentPage(1)
@@ -68,7 +68,7 @@ const RecipesContainer = () => {
             title={r.title}
             image={r.image}
             healthScore={r.healthScore}
-          // diets={r.diets.name}
+            diets={r.created ? r.diets.map(el => el.name + (' ')) : r.diets + (' ')}
           />
         })}
 
