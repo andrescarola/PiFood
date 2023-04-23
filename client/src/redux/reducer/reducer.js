@@ -1,8 +1,10 @@
-import { FILTER_RECIPES_BY_DIETS, FILTER_RECIPES_BY_ORIGIN, GET_RECIPES, SORT_BY_HEALTHSCORE, SORT_BY_TITLE, GET_RECIPES_BY_TITLE } from "../actions/actions";
+import { FILTER_RECIPES_BY_DIETS, FILTER_RECIPES_BY_ORIGIN, GET_RECIPES, SORT_BY_HEALTHSCORE, SORT_BY_TITLE, GET_RECIPES_BY_TITLE, GET_DIETS, GET_RECIPE_DETAIL } from "../actions/actions";
 
 const initialState = {
     recipes: [],
-    allRecipes: []
+    allRecipes: [],
+    diets: [],
+    detail: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -20,6 +22,19 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 recipes: action.payload
             };
+
+        case GET_RECIPE_DETAIL:
+            return {
+                ...state,
+                detail: action.payload
+            }
+
+        case GET_DIETS:
+            return {
+                ...state,
+                diets: action.payload
+            };
+
 
 
         case FILTER_RECIPES_BY_ORIGIN:

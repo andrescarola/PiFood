@@ -6,8 +6,8 @@ module.exports = (sequelize) => {
   sequelize.define('diet', {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
+      allowNull: false,
       autoIncrement: true
     },
     name: {
