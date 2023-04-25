@@ -1,6 +1,6 @@
 const { Recipe, Diet } = require('../db');
 const axios = require('axios');
-const arrayMapper = require('../utils/arrayMapper');
+const {arrayMapper} = require('../utils/arrayMapper');
 const { API_KEY_ONE } = process.env;
 
 const getAllRecipes = async () => {
