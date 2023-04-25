@@ -1,14 +1,16 @@
 import Recipe from "../recipe/recipe";
 import style from './recipesContainer.module.css';
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pager from "../pager/pager";
-import { getRecipes, filterRecipesByOrigin, sortByTitle, sortByHealthScore } from '../../redux/actions/actions';
+import { getRecipes, filterRecipesByOrigin, sortByTitle, sortByHealthScore, getDiets, filterRecipesByDiets } from '../../redux/actions/actions';
 
 const RecipesContainer = () => {
 
   const dispatch = useDispatch();
   const recipes = useSelector(state => state.recipes)
+  
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage, setRecipesPerPage] = useState(9);
@@ -41,6 +43,19 @@ const RecipesContainer = () => {
     setCurrentPage(1)
   };
 
+  useEffect(() => {
+    dispatch(getDiets())
+  }, [])
+
+  const diets = useSelector(state => state.diets)
+
+  const filterByDietsHandler =  (e) => {
+    console.log(e)
+    dispatch(filterRecipesByDiets(e.target.value))
+    setCurrentPage(1)
+  }  
+
+
   return (
     <div>
       <select onChange={e => sortByTitleHandler(e)}>
@@ -53,9 +68,15 @@ const RecipesContainer = () => {
         <option value='descendent'>Higher Score</option>
         <option value='ascendent'>Lower Score</option>
       </select>
-      <select onChange={e => originFilterHandler(e)}>
+      <select onChange={(e) => filterByDietsHandler(e)}>
+        <option value='all'>All diets</option>
+        {diets.map(d => (
+          <option value={d.name}>{d.name}</option>
+        ))}
+      </select>
+      <select onChange={originFilterHandler}>
         <option value="filter" disabled="disabled">Filter by</option>
-        <option value='all'>All</option>
+        <option value='all'>All recipes</option>
         <option value='api'>Our Recipes</option>
         <option value='db'>Your Recipes</option>
       </select>
@@ -68,7 +89,7 @@ const RecipesContainer = () => {
             title={r.title}
             image={r.image}
             healthScore={r.healthScore}
-            diets={r.created ? r.diets.map(el => el.name + (' ')) : r.diets + (' ')}
+            diets={r.diets + ' '}
           />
         })}
 

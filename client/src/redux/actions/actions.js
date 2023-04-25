@@ -56,27 +56,16 @@ export const getDiets = () => {
     return async function (dispatch) {
         try {
             const diets = await axios.get('http://localhost:3001/diets');
+            const dietsSorted = diets.data.sort((a, b) => a.name.localeCompare(b.name));
             dispatch({
                 type: GET_DIETS,
-                payload: diets.data
+                payload: dietsSorted
             });
         } catch (error) {
             console.log(error);
         }
     }
 };
-
-// export const postDiets = (payload) => {
-//     return async function (dispatch) {
-//         try {
-//             const response = axios.post('http://localhost:3001/recipes', payload)
-//             return response
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     }
-// };
-
 
 export const filterRecipesByDiets = (payload) => {
     return {

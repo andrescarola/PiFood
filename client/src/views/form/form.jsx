@@ -4,15 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { getDiets } from "../../redux/actions/actions";
 import { Link, useNavigate } from 'react-router-dom';
+import validate from "./validation";
 
 
 const Form = () => {
-
+  
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
-  
-  
   const [form, setForm] = useState({
     title: "",
     summary: "",
@@ -21,32 +20,30 @@ const Form = () => {
     image: "",
     diets: [],
   });
-  
-  
-  // const [errors, setErrors] = useState({
-    //   title: "",
-    //   summary: "",
-    //   healthScore: "",
-    //   instructions: "",
-    //   image: "",
-    //   diets: [],
-    // });
-    
-    // console.log(form);
 
-    
-    const changeHandler = (event) => {
-      const property = event.target.name;
-      const value = event.target.value;
-      setForm({ ...form, [property]: value });
-    };
-    
-    useEffect(() => {
-      dispatch(getDiets())
-    }, [])
-  
-    const diets = useSelector((state) => state.diets);
-    
+  const [errors, setErrors] = useState({
+    title: "",
+    summary: "",
+    healthScore: "",
+    instructions: "",
+    image: "",
+    diets: [],
+  });
+
+  const changeHandler = (event) => {
+    const property = event.target.name;
+    const value = event.target.value;
+    setErrors(validate({ ...form, [property]: value }))
+    setForm({ ...form, [property]: value });
+
+  };
+
+  useEffect(() => {
+    dispatch(getDiets())
+  }, [])
+
+  const diets = useSelector((state) => state.diets);
+
   const checkboxHandler = (e) => {
     if (e.target.checked) {
       setForm({
@@ -67,11 +64,6 @@ const Form = () => {
       .then(res => alert('Your recipe has been created'))
       .then(res => navigate('/home'))
       .catch(err => alert(`Error: Please check that you have completed all the required fields`))
-
-  };
-
-  const validate = (form) => {
-
   };
 
   return (
@@ -85,26 +77,31 @@ const Form = () => {
         <div>
           <label>Title: </label>
           <input type="text" value={form.title} onChange={changeHandler} name="title" />
+          {errors.title && <span>{errors.title}</span>}
         </div>
 
         <div>
           <label>Summary: </label>
           <input type="text" value={form.summary} onChange={changeHandler} name="summary" />
+          {errors.summary && <span>{errors.summary}</span>}
         </div>
 
         <div>
           <label>Health Score: </label>
           <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore" />
+          {errors.healthScore && <span>{errors.healthScore}</span>}
         </div>
 
         <div>
           <label>Instructions: </label>
           <textarea type="text" value={form.instructions} onChange={changeHandler} name="instructions" />
+          {errors.instructions && <span>{errors.instructions}</span>}
         </div>
 
         <div>
           <label>Image: </label>
           <input type="text" value={form.image} onChange={changeHandler} name="image" />
+          {errors.image && <span>{errors.image}</span>}
         </div>
 
         <div>

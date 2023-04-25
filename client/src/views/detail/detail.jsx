@@ -30,7 +30,7 @@ const Detail = () => {
                 <h1>{recipeDetail[0].title}</h1>
                 <img src={recipeDetail[0].image} alt="not found"></img>
                 <h2>Health Score: {recipeDetail[0].healthScore}</h2>
-                <h2>Diets: {recipeDetail[0].created ? recipeDetail[0].diets.map(el => el.name + (' ')) : recipeDetail[0].diets + (' ')}</h2>
+                <h2>Diets: {recipeDetail[0].diets}</h2>
                 <h3>Summary: {recipeDetail[0].summary}</h3>
                 <h3>Instructions: {recipeDetail[0].created ? recipeDetail[0].instructions : recipeDetail[0].instructions.map(el => el.steps.map(el => <p>{el.step}</p>))}</h3>
                 <h5>Id: {recipeDetail[0].id}</h5>

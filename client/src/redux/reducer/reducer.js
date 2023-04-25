@@ -47,11 +47,16 @@ const rootReducer = (state = initialState, action) => {
             };
 
 
-        // case FILTER_RECIPES_BY_DIETS: 
-        //     const allRecipes = state.recipes;
+        case FILTER_RECIPES_BY_DIETS:
+            const allRecipes2 = state.allRecipes;
 
-        //     return {
-        //     }
+            const filtered = action.payload === 'all' ? allRecipes2
+                : allRecipes2.filter(el => el.diets.some(diet => diet === action.payload))
+
+            return {
+                ...state,
+                recipes: filtered
+            }
 
         case SORT_BY_TITLE:
 

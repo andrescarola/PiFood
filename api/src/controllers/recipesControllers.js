@@ -14,13 +14,26 @@ const getAllRecipes = async () => {
         }
     });
 
+    const dbinfo = databaseRecipes.map(elem => {
+        return {
+            id: elem.id,
+            title: elem.title,
+            image: elem.image,
+            summary: elem.summary,
+            healthScore: elem.healthScore,
+            instructions: elem.analyzedInstructions,
+            diets: elem.diets.map(el => el.name),
+            created: elem.created
+        }
+    })
+
     const apiRecipesImport = (
         await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_ONE}&addRecipeInformation=true&instructionsRequired=true&number=100`)
     ).data.results;
 
     const apiRecipes = arrayMapper(apiRecipesImport);
 
-    return [...databaseRecipes, ...apiRecipes];
+    return [...dbinfo, ...apiRecipes];
 };
 
 const searchRecipeByName = async (title) => {
