@@ -55,9 +55,9 @@ const RecipesContainer = () => {
     setCurrentPage(1)
   }  
 
-
   return (
     <div>
+      <div className={style.filters}>
       <select onChange={e => sortByTitleHandler(e)}>
         <option value="order" disabled="disabled">Order by</option>
         <option value='ascendent'>Ascendent</option>
@@ -81,7 +81,8 @@ const RecipesContainer = () => {
         <option value='db'>Your Recipes</option>
       </select>
       <button onClick={cleanFiltersHandler}>Remove Filters</button>
-
+      </div>
+      
       <div className={style.recipesContainer}>
         {currentRecipes.map(r => {
           return <Recipe

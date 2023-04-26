@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
+
+.home {
+    /* background-image: url('../../components/img/blackBg.jpg'); */
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    background-color: rgba(233, 233, 233, 0.519)
+    
+}
+
+.title {
+    color: rgb(36, 126, 117);
+    text-shadow: 2px 2px 2px white;
+    font-family: 'Sigmar', cursive;
+    font-size: xxx-large
+}

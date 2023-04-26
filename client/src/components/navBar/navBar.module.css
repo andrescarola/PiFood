@@ -1,8 +1,43 @@
-.navBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-radius: 15px;
-    border: 1px solid black;
-};
+@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
 
+  .logoContainer {
+    flex-grow: 1;
+    width: 100px;
+    height: 100px;
+   
+  }
+  
+  .logoContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .navLinks {
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+  
+  }
+  
+  .navLinks li {
+    margin-right: 0;
+    list-style: none;
+    margin-left: 1rem; 
+  }
+  
+  .navLinks a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    margin-top: 80px;
+    color: black;
+    text-shadow: 2px 2px 2px white;
+    font-family: 'Sigmar', cursive;
+  }
+
+ 
+  
