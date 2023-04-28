@@ -1,6 +1,80 @@
 .recipe {
     border: 1px solid black;
-    width: fit-content;
+    box-sizing: border-box;
     height: fit-content;
     border-radius: 10px;
+    width: 500px;
+    height: 550px;
+    overflow: hidden;
+    
+}
+
+.recipe > img {
+    width: 380px;
+}
+
+.recipe:hover {
+    scale: 1.02
+}
+
+.link {
+    text-decoration: none;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    height: 5rem;
+    font-size: 18px;
+    color: rgb(36, 126, 117);
+    text-decoration: bold;
+}
+
+.image {
+    width: 312px;
+    height: 231px;
+    object-fit: cover;
+}
+
+.healthScore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width:50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: #f9b208;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 6px 16px;
+    border-radius: 16px;
+    
+}
+
+.diets {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content:center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 0% 3%;
+    height: 120px;
+}
+
+.diets > span {
+    color: white;
+    font-weight: bolder;
+    background-color: rgb(36, 126, 117);
+    padding: 6px 16px;
+    border-radius: 16px;
 }

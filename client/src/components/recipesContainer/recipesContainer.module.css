@@ -1,10 +1,14 @@
 .recipesContainer {
 display: flex;
+position: relative;
 flex-direction: row;
+justify-content: space-around;
+padding: 20px;
 flex-wrap: wrap;
 border: 1px solid black;
 border-radius: 15px;
 gap: 1em;
+margin: 10px;
 };
 
 .filters{

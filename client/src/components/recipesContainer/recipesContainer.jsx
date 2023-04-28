@@ -48,9 +48,9 @@ const RecipesContainer = () => {
   }, [])
 
   const diets = useSelector(state => state.diets)
+  
 
   const filterByDietsHandler =  (e) => {
-    console.log(e)
     dispatch(filterRecipesByDiets(e.target.value))
     setCurrentPage(1)
   }  
@@ -90,7 +90,7 @@ const RecipesContainer = () => {
             title={r.title}
             image={r.image}
             healthScore={r.healthScore}
-            diets={r.diets + ' '}
+            diets={r.diets}
           />
         })}
 

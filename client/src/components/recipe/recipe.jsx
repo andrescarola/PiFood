@@ -4,14 +4,18 @@ import { Link } from 'react-router-dom';
 
 const Recipe = (props) => {
 
-    console.log(props);
+    console.log(props.diets)
+    
     return (
-        <Link to={`/detail/${props.id}`}>
+        <Link className={style.link} to={`/detail/${props.id}`}>
         <div className={style.recipe}>
-            <p>{props.title}</p>
-            <img src={props.image} alt='not found' />
-            <p>Health Score: {props.healthScore}</p>
-            <p>Diets: {props.diets}</p>
+            <p className={style.title}>{props.title}</p>
+            <img className={style.image} src={props.image} alt='not found' />
+            <p className={style.healthScore}>Health Score: {props.healthScore}</p>
+            <p className={style.diets}>
+              
+                {props.diets.map((d) => <span key={d}>{d}</span>)}
+            </p>
         </div>
         </Link>
     )
