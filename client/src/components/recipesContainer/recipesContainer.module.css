@@ -1,19 +1,125 @@
 .recipesContainer {
-display: flex;
-position: relative;
-flex-direction: row;
-justify-content: space-around;
-padding: 20px;
-flex-wrap: wrap;
-border: 1px solid black;
-border-radius: 15px;
-gap: 1em;
-margin: 10px;
-};
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    gap: 1em;
+    margin: 10px;
+    min-height: calc(100vh - 150px);
+    margin-bottom: 100px;
+}
 
-.filters{
+;
+
+.filters {
     display: flex;
     justify-content: space-around;
-    align-items: center; 
+    align-items: center;
     width: 100%
+}
+
+.pager {
+    position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+
+.pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 25px 8px;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.page {
+    background-color: rgb(36, 126, 117);
+    color: white;
+    padding: 10px 10px;
+    display: inline-block;
+    margin: 0 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+
+
+}
+
+.active {
+    background-color: #f9b208;
+    color: white;
+    padding: 10px 10px;
+    display: flex;
+    display: inline-block;
+    margin: 0 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: default;
+    text-decoration: none;
+
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+    margin-bottom: 1rem;
+    color: rgba(0, 0, 0, 0.746);
+    font-weight: bold;
+    font-size: 16px;
+
+
+}
+
+.filters select {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: none;
+    background-color: rgb(36, 126, 117);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    height: 2, 5rem;
+}
+
+.filters button {
+    padding: 8.6px 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    background-color: #f9b208;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    height: 2, 5rem;
+}
+
+.filters button:hover {
+    background-color: rgb(36, 126, 117);
+}
+
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
 }

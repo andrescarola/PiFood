@@ -4,7 +4,7 @@
     height: fit-content;
     border-radius: 10px;
     width: 500px;
-    height: 550px;
+    height: 530px;
     overflow: hidden;
     
 }
@@ -28,9 +28,9 @@
     margin: 0;
     width: 100%;
     height: 5rem;
-    font-size: 18px;
+    font-size: 20px;
     color: rgb(36, 126, 117);
-    text-decoration: bold;
+    font-weight: bold;
 }
 
 .image {
@@ -44,7 +44,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width:50%;
+    width: 340px;
     margin: 0 auto;
     margin-top: 20px;
     background-color: #f9b208;
