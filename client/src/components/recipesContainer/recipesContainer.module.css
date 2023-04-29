@@ -12,21 +12,12 @@
     margin-bottom: 100px;
 }
 
-;
-
-.filters {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%
-}
-
 .pager {
     position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
 }
 
 .pages {
@@ -53,8 +44,10 @@
     border: none;
     cursor: pointer;
     text-decoration: none;
+}
 
-
+.page:hover {
+    background-color: #f99e0f;
 }
 
 .active {
@@ -71,7 +64,7 @@
     border: none;
     cursor: default;
     text-decoration: none;
-
+    
 }
 
 .filters {
@@ -84,8 +77,6 @@
     color: rgba(0, 0, 0, 0.746);
     font-weight: bold;
     font-size: 16px;
-
-
 }
 
 .filters select {
@@ -113,7 +104,7 @@
 }
 
 .filters button:hover {
-    background-color: rgb(36, 126, 117);
+    background-color: #f99e0f;
 }
 
 

@@ -5,10 +5,11 @@ import axios from 'axios';
 import { getDiets } from "../../redux/actions/actions";
 import { Link, useNavigate } from 'react-router-dom';
 import validate from "./validation";
+import style from './form.module.css';
 
 
 const Form = () => {
-  
+
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
@@ -67,55 +68,68 @@ const Form = () => {
   };
 
   return (
-    <div>
-      <Link to='/home'>
-        <button>Return to Home Page</button>
-      </Link>
-      <h1>Share with us your favorite recipe!</h1>
-
+    <div className={style.form}>
+      <p className={style.title}>Share with us your favorite recipe!</p>
       <form onSubmit={submitHandler}>
-        <div>
-          <label>Title: </label>
-          <input type="text" value={form.title} onChange={changeHandler} name="title" />
-          {errors.title && <span>{errors.title}</span>}
-        </div>
 
-        <div>
-          <label>Summary: </label>
-          <input type="text" value={form.summary} onChange={changeHandler} name="summary" />
-          {errors.summary && <span>{errors.summary}</span>}
-        </div>
+        <div className={style.main}>
 
-        <div>
-          <label>Health Score: </label>
-          <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore" />
-          {errors.healthScore && <span>{errors.healthScore}</span>}
-        </div>
+          <div className={style.information}>
+            
+            <div>
+              <label>Title: </label>
+              <input type="text" value={form.title} onChange={changeHandler} name="title" />
+              </div>
+              <div>
+              {errors.title && <span>{errors.title}</span>}
+              </div>
 
-        <div>
-          <label>Instructions: </label>
-          <textarea type="text" value={form.instructions} onChange={changeHandler} name="instructions" />
-          {errors.instructions && <span>{errors.instructions}</span>}
-        </div>
+            <div>
+              <label>Health Score: </label>
+              <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore" />
+              </div>
+              <div>
+              {errors.healthScore && <span>{errors.healthScore}</span>}
+            </div>
 
-        <div>
-          <label>Image: </label>
-          <input type="text" value={form.image} onChange={changeHandler} name="image" />
-          {errors.image && <span>{errors.image}</span>}
-        </div>
+            <div>
+              <label>Image: </label>
+              <input type="text" value={form.image} onChange={changeHandler} name="image" />
+              </div>
+              <div>
+              {errors.image && <span>{errors.image}</span>}
+            </div>
 
-        <div>
-          <label>Diets: </label>
-          <div>
-            <label>
-              {diets.map((d) => (
-                <label key={d.id}>{d.name}<input type='checkbox' name={d.name} value={d.name} onChange={checkboxHandler} checked={form.diets.includes(d.name)}></input></label>))}
-            </label>
+            <div>
+              <label>Summary: </label>
+              <textarea className={style.summary} type="text" value={form.summary} onChange={changeHandler} name="summary" />
+              </div>
+              <div>
+              {errors.summary && <span>{errors.summary}</span>}
+            </div>
+
+            <div>
+              <label>Instructions: </label>
+              <textarea className={style.instructions} type="text" value={form.instructions} onChange={changeHandler} name="instructions" />
+              </div>
+              <div>
+              {errors.instructions && <span>{errors.instructions}</span>}
+            </div>
+          </div>
+
+          <div className={style.diets}>
+            <p>DIETS</p>
+            <div>
+              <label>
+                {diets.map((d) => (
+                  <label key={d.id}>{d.name}<input type='checkbox' name={d.name} value={d.name} onChange={checkboxHandler} checked={form.diets.includes(d.name)}></input></label>))}
+              </label>
+            </div>
           </div>
         </div>
-
-        <button type='submit'>SUBMIT</button>
+        <button className={style.submit} type='submit'>SUBMIT</button>
       </form>
+
     </div>
   );
 };

@@ -4,7 +4,8 @@
     margin: 0px;
     padding: 0px;
     position: absolute;
-    background-color: rgba(233, 233, 233, 0.519)
+    background-color: rgba(233, 233, 233, 0.519);
+    width: 100%;
     
 }
 
