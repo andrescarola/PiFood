@@ -80,15 +80,15 @@ export const RecipesContainer = () => {
       <div className={style.filters}>
         <div>
           <label htmlFor="alphabetical">SORT: </label>
-          <select id='alphabetical' onChange={e => sortByTitleHandler(e)}>
-            <option value="order" disabled="disabled">Order by</option>
+          <select defaultValue={'order'} id='alphabetical' onChange={e => sortByTitleHandler(e)}>
+            <option value='order' disabled="disabled">Order by</option>
             <option value='ascendent'>Ascendent</option>
             <option value='descendent'>Descendent</option>
           </select>
         </div>
         <div>
           <label htmlFor="healthScore">HEALTH SCORE: </label>
-          <select id='healthScore' onChange={e => sortByHsHandler(e)}>
+          <select defaultValue={'order'} id='healthScore' onChange={e => sortByHsHandler(e)}>
             <option value="order" disabled="disabled">Order by</option>
             <option value='descendent'>Higher Score</option>
             <option value='ascendent'>Lower Score</option>
@@ -96,24 +96,24 @@ export const RecipesContainer = () => {
         </div>
         <div>
           <label htmlFor="creator">CREATOR: </label>
-          <select id='creator' onChange={originFilterHandler}>
+          <select defaultValue={'filter'} id='creator' onChange={originFilterHandler}>
             <option value="filter" disabled="disabled">Filter by</option>
-            <option value='all'>All recipes</option>
+            <option value='all'>All Recipes</option>
             <option value='api'>Our Recipes</option>
             <option value='db'>Your Recipes</option>
           </select>
         </div>
         <div>
           <label htmlFor="diets">DIETS: </label>
-          <select id='diets' onChange={(e) => filterByDietsHandler(e)}>
+          <select defaultValue={'filter'} id='diets' onChange={(e) => filterByDietsHandler(e)}>
             <option value="filter" disabled="disabled">Filter by</option>
-            <option value='all'>All diets</option>
+            <option value='all'>All Diets</option>
             {diets.map(d => (
               <option value={d.name}>{d.name}</option>
             ))}
           </select>
         </div>
-        <button onClick={cleanFiltersHandler}>Remove Filters</button>
+        <button onClick={cleanFiltersHandler}>Show All</button>
       </div>
 
       <div className={style.recipesContainer}>

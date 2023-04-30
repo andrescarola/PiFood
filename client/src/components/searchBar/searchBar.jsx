@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRecipesByTitle } from '../../redux/actions/actions';
+import { getRecipes, getRecipesByTitle } from '../../redux/actions/actions';
 import style from './searchBar.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,9 +16,13 @@ const SearchBar = () => {
         setTitle(e.target.value);
     }
 
-    const searchHandler = (e) => {
+    const searchHandler = async (e) => {
+        if (!title) {
+            await dispatch(getRecipes())
+        } else {
+            await dispatch(getRecipesByTitle(title))
+        }
         navigate('/home');
-        dispatch(getRecipesByTitle(title))
         setTitle('');
     }
 

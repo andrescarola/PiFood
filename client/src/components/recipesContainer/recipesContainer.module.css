@@ -101,6 +101,7 @@
     font-weight: bold;
     cursor: pointer;
     height: 2, 5rem;
+    width: 200px;
 }
 
 .filters button:hover {

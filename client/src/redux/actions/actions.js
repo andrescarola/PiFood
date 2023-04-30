@@ -33,6 +33,7 @@ export const getRecipesByTitle = (title) => {
                 payload: recipes.data
             });
         } catch (error) {
+            alert('No recipes have been found matching your search')
             console.log(error);
         }
     }
@@ -96,12 +97,6 @@ export const sortByHealthScore = (payload) => {
     }
 };
 
-const filterRecipesByOriginAndDiet = (state, origin, diet) => {
-    const allRecipes = state.recipes;
-    const originFiltered = origin === 'created' ? allRecipes.filter(el => el.createdInDb) : allRecipes.filter(el => !el.createdInDb);
-    const filtered = diet === 'all' ? originFiltered
-      : originFiltered.filter(el => el.diets.some(dietName => dietName === diet));
-    return filtered;
-  };
+
   
 
