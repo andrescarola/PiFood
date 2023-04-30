@@ -37,6 +37,8 @@
     color: white;
     text-shadow: 2px 2px 2px black;
     font-family: 'Sigmar', cursive;
+    transition: all 0.3s ease;
+    
   }
 
   .navLinks a:hover{
