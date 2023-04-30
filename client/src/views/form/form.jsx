@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { getDiets } from "../../redux/actions/actions";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import validate from "./validation";
 import style from './form.module.css';
 
@@ -102,7 +102,7 @@ const Form = () => {
 
             <div>
               <label>Summary: </label>
-              <textarea className={style.summary} type="text" value={form.summary} onChange={changeHandler} name="summary" />
+              <textarea className={style.summary} value={form.summary} onChange={changeHandler} name="summary" />
               </div>
               <div>
               {errors.summary && <span>{errors.summary}</span>}
@@ -110,7 +110,7 @@ const Form = () => {
 
             <div>
               <label>Instructions: </label>
-              <textarea className={style.instructions} type="text" value={form.instructions} onChange={changeHandler} name="instructions" />
+              <textarea className={style.instructions} value={form.instructions} onChange={changeHandler} name="instructions" />
               </div>
               <div>
               {errors.instructions && <span>{errors.instructions}</span>}

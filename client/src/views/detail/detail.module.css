@@ -28,7 +28,7 @@
 
 .button {
     padding: 6px;
-    background-color: #f9b208;
+    background-color: #f99e0f;
     color: white;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -39,8 +39,9 @@
     width: 150px;
 }
 .button:hover {
-    background-color: #f99e0f;
+    background-color: #f9b208;
 }
+
 
 
 .title {
@@ -71,7 +72,7 @@
     width: 400px;
     margin: 0 auto;
     margin-top: 20px;
-    background-color: #f9b208;
+    background-color: #f99e0f;
     color: white;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -119,7 +120,7 @@
     width: 700px;
     margin: 0 auto;
     margin-top: 20px;
-    background-color: #f9b208;
+    background-color: #f99e0f;
     color: white;
     border: none;
     border-radius: 0 5px 5px 0;

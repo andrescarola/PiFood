@@ -58,6 +58,10 @@ export const RecipesContainer = () => {
   const cleanFiltersHandler = (e) => {
     dispatch(getRecipes(e))
     setCurrentPage(1)
+    document.getElementById('alphabetical').selectedIndex = 0;
+    document.getElementById('healthScore').selectedIndex = 0;
+    document.getElementById('creator').selectedIndex = 0;
+    document.getElementById('diets').selectedIndex = 0;
   };
 
   useEffect(() => {
@@ -65,7 +69,6 @@ export const RecipesContainer = () => {
   }, [dispatch])
 
   const diets = useSelector(state => state.diets)
-
 
   const filterByDietsHandler = (e) => {
     dispatch(filterRecipesByDiets(e.target.value))
@@ -123,16 +126,19 @@ export const RecipesContainer = () => {
             diets={r.diets}
           />
         })}
-        </div>
-        <div className={style.pager} >
+      </div>
+      <div className={style.pager} >
         <div className={style.pages}>
           <button className={style.page} onClick={previousHandler} disabled={currentPage === 1}>&lt;&lt;</button>
           {Pager() && Pager().map(number => (
             <button className={currentPage === number ? style.active : style.page} key={number} onClick={() => pager(number)}>{number}</button>))}
           <button className={style.page} onClick={nextHandler} disabled={currentPage === Pager().length}>&gt;&gt;</button>
         </div>
-        </div>
-      
+      </div>
+
     </div>
   )
 }
+
+
+

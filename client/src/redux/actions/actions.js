@@ -9,6 +9,7 @@ export const FILTER_RECIPES_BY_ORIGIN = 'FILTER_RECIPES_BY_ORIGIN';
 export const SORT_BY_TITLE = 'SORT_BY_TITLE';
 export const SORT_BY_HEALTHSCORE = 'SORT_BY_HEALTHSCORE';
 
+
 export const getRecipes = () => {
     return async function (dispatch) {
         try {
@@ -94,4 +95,13 @@ export const sortByHealthScore = (payload) => {
         payload
     }
 };
+
+const filterRecipesByOriginAndDiet = (state, origin, diet) => {
+    const allRecipes = state.recipes;
+    const originFiltered = origin === 'created' ? allRecipes.filter(el => el.createdInDb) : allRecipes.filter(el => !el.createdInDb);
+    const filtered = diet === 'all' ? originFiltered
+      : originFiltered.filter(el => el.diets.some(dietName => dietName === diet));
+    return filtered;
+  };
+  
 

@@ -3,18 +3,21 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getRecipesByTitle } from '../../redux/actions/actions';
 import style from './searchBar.module.css';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const SearchBar = () => {
     const dispatch = useDispatch();
     const [title, setTitle] = useState('');
+    const navigate = useNavigate();
 
     const inputChangeHandler = (e) => {
         setTitle(e.target.value);
     }
 
-    const submitHandler = (e) => {
-        e.preventDefault();
+    const searchHandler = (e) => {
+        navigate('/home');
         dispatch(getRecipesByTitle(title))
         setTitle('');
     }
@@ -22,16 +25,16 @@ const SearchBar = () => {
     return (
         <div className={style.SearchBar}>
             <input
-            className={style.input}
-            type='text'
-            value={title}
-            placeholder='Search your recipe...'
-            onChange= {(e) => inputChangeHandler(e)}
+                className={style.input}
+                type='text'
+                value={title}
+                placeholder='Search your recipe...'
+                onChange={(e) => inputChangeHandler(e)}
             />
             <button
-            className={style.button}
-            type='submit' 
-            onClick={(e) => submitHandler(e)}
+                className={style.button}
+                type='submit'
+                onClick={(e) => searchHandler(e)}
             >Search</button>
         </div>
     )

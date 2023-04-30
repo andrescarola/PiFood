@@ -9,7 +9,7 @@ const validate = (form) => {
         errors.title = ''
     };
 
-    if (!form.summary) {
+    if (form.summary === '') {
         errors.summary = 'Please provide a summary to your recipe'
     }
     else {
@@ -24,7 +24,7 @@ const validate = (form) => {
         errors.healthScore = ''
     };
 
-    if (!form.instructions) {
+    if (form.instructions === '') {
         errors.instructions = 'Please provide the instructions to prepare your recipe'
     }
     else {

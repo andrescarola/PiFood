@@ -21,7 +21,7 @@ const getAllRecipes = async () => {
             image: elem.image,
             summary: elem.summary,
             healthScore: elem.healthScore,
-            instructions: elem.analyzedInstructions,
+            instructions: elem.instructions,
             diets: elem.diets.map(el => el.name),
             created: elem.created
         }

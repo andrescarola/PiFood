@@ -16,6 +16,7 @@ const Detail = () => {
     }, [dispatch, detailId])
 
     const recipeDetail = useSelector((state) => state.detail)
+    console.log(recipeDetail)
 
     const backButtonHandler = () => {
         window.history.back();

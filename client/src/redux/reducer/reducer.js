@@ -4,7 +4,7 @@ const initialState = {
     recipes: [],
     allRecipes: [],
     diets: [],
-    detail: []
+    detail: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,13 +14,14 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 recipes: action.payload,
-                allRecipes: action.payload
+                allRecipes: action.payload,
             };
 
         case GET_RECIPES_BY_TITLE:
             return {
                 ...state,
-                recipes: action.payload
+                recipes: action.payload,
+                
             };
 
         case GET_RECIPE_DETAIL:
@@ -35,8 +36,6 @@ const rootReducer = (state = initialState, action) => {
                 diets: action.payload
             };
 
-
-
         case FILTER_RECIPES_BY_ORIGIN:
             const allRecipes = state.allRecipes;
             const origin = action.payload === 'db' ? allRecipes.filter(el => el.created) : allRecipes.filter(el => !el.created);
@@ -45,7 +44,6 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 recipes: action.payload === 'all' ? allRecipes : origin
             };
-
 
         case FILTER_RECIPES_BY_DIETS:
             const allRecipes2 = state.allRecipes;
@@ -79,7 +77,6 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 recipes: sortByHs
             }
-
 
         default:
             return {
