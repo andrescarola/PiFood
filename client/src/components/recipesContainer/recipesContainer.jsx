@@ -109,7 +109,7 @@ export const RecipesContainer = () => {
             <option value="filter" disabled="disabled">Filter by</option>
             <option value='all'>All Diets</option>
             {diets.map(d => (
-              <option value={d.name}>{d.name}</option>
+              <option key={d.id} value={d.name}>{d.name}</option>
             ))}
           </select>
         </div>
@@ -120,6 +120,7 @@ export const RecipesContainer = () => {
         {currentRecipes.map(r => {
           return <Recipe
             id={r.id}
+            key={r.id}
             title={r.title}
             image={r.image}
             healthScore={r.healthScore}
