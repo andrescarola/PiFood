@@ -32,7 +32,7 @@ const SearchBar = () => {
                 className={style.input}
                 type='text'
                 value={title}
-                placeholder='Search your recipe...'
+                placeholder='Search your recipe by name...'
                 onChange={(e) => inputChangeHandler(e)}
             />
             <button

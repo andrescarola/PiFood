@@ -109,7 +109,7 @@ export const RecipesContainer = () => {
             <option value="filter" disabled="disabled">Filter by</option>
             <option value='all'>All Diets</option>
             {diets.map(d => (
-              <option key={d.id} value={d.name}>{d.name}</option>
+              <option key={d.id} value={d.name}>{d.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</option>
             ))}
           </select>
         </div>
