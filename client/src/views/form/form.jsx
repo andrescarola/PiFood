@@ -15,19 +15,19 @@ const Form = () => {
 
   const [form, setForm] = useState({
     title: "",
-    summary: "",
     healthScore: "",
-    instructions: "",
     image: "",
+    summary: "",
+    instructions: "",
     diets: [],
   });
 
   const [errors, setErrors] = useState({
     title: "",
-    summary: "",
     healthScore: "",
-    instructions: "",
     image: "",
+    summary: "",
+    instructions: "",
     diets: [],
   });
 
@@ -122,7 +122,8 @@ const Form = () => {
             <div>
               <label>
                 {diets.map((d) => (
-                  <label key={d.id}>{d.name}<input type='checkbox' name={d.name} value={d.name} onChange={checkboxHandler} checked={form.diets.includes(d.name)}></input></label>))}
+                  <label key={d.id}>{d.name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                  <input type='checkbox' name={d.name} value={d.name} onChange={checkboxHandler} checked={form.diets.includes(d.name)}></input></label>))}
               </label>
             </div>
           </div>
