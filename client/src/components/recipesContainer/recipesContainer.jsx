@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { getRecipes, filterRecipesByOrigin, sortByTitle, sortByHealthScore, getDiets, filterRecipesByDiets } from '../../redux/actions/actions';
 
 export const RecipesContainer = () => {
-
   const dispatch = useDispatch();
+
   const recipes = useSelector(state => state.recipes)
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -130,13 +130,12 @@ export const RecipesContainer = () => {
       </div>
       <div className={style.pager} >
         <div className={style.pages}>
-          <button className={style.page} onClick={previousHandler} disabled={currentPage === 1}>&lt;&lt;</button>
+          {currentPage > 1 && <button className={style.page} onClick={previousHandler}>&lt;&lt;</button>}
           {Pager() && Pager().map(number => (
             <button className={currentPage === number ? style.active : style.page} key={number} onClick={() => pager(number)}>{number}</button>))}
-          <button className={style.page} onClick={nextHandler} disabled={currentPage === Pager().length}>&gt;&gt;</button>
+          {lastRecipeIndex < recipes.length && <button className={style.page} onClick={nextHandler}>&gt;&gt;</button>}
         </div>
       </div>
-
     </div>
   )
 }

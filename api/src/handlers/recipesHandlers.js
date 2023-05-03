@@ -1,10 +1,10 @@
-const { searchRecipeByName, getAllRecipes, getRecipeById, createRecipe } = require('../controllers/recipesControllers')
+const { searchRecipeByTitle, getAllRecipes, getRecipeById, createRecipe } = require('../controllers/recipesControllers')
 
 const getRecipesHandler = async (req, res) => {
     const { title } = req.query;
     try {
         const results = title
-            ? await searchRecipeByName(title)
+            ? await searchRecipeByTitle(title)
             : await getAllRecipes();
         res.status(200).json(results);
     } catch (error) {

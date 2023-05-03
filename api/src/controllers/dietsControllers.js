@@ -11,8 +11,6 @@ const getDiets = async () => {
 
     const diets = dietsArrayMapper(apiDiets).flat()
 
-    // const diets = apiDiets.map(el => el.diets).flat() //me devuelve un arreglo con los arreglos de dietas y luego unifica a un solo arreglo.
-
     diets.forEach(el => {
         Diet.findOrCreate({
             where: { name: el }

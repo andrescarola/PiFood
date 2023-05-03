@@ -8,7 +8,6 @@ import style from './home.module.css'
 const Home = () => {
     const dispatch = useDispatch();
 
-
     useEffect(() => {
         dispatch(getRecipes())
     }, [dispatch]);

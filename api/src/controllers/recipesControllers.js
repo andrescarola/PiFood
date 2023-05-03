@@ -9,12 +9,12 @@ const getAllRecipes = async () => {
             model: Diet,
             attributes: ['name'],
             through: {
-                attributes: [], // comprobación
+                attributes: [], 
             }
         }
     });
 
-    const dbinfo = databaseRecipes.map(elem => {
+    const dbRecipes = databaseRecipes.map(elem => {
         return {
             id: elem.id,
             title: elem.title,
@@ -33,16 +33,16 @@ const getAllRecipes = async () => {
 
     const apiRecipes = arrayMapper(apiRecipesImport);
 
-    return [...dbinfo, ...apiRecipes];
+    return [...dbRecipes, ...apiRecipes];
 };
 
-const searchRecipeByName = async (title) => {
+const searchRecipeByTitle = async (title) => {
     const allRecipes = await getAllRecipes();
 
     if (title) {
         const recipesFiltered = allRecipes.filter((recipe) => recipe.title.toLowerCase().includes(title.toLowerCase()));
         if (recipesFiltered.length === 0) {
-            throw Error(`No recipes have been found that match your search: '${title}'`)
+            throw Error(`No recipes have been found matching your search: '${title}'`)
         } else {
             return recipesFiltered;
         }
@@ -56,7 +56,7 @@ const getRecipeById = async (id) => {
     const recipe = allRecipes.filter(el => el.id == id)
 
     if (recipe.length === 0) {
-        throw Error(`No recipe has been found that matches the id: ${id}`)
+        throw Error(`No recipe has been found matching the id: ${id}`)
     } else {
         return recipe;
     }
@@ -83,7 +83,7 @@ const createRecipe = async (title, image, summary, healthScore, instructions, cr
 };
 
 module.exports = {
-    searchRecipeByName,
+    searchRecipeByTitle,
     getAllRecipes,
     getRecipeById,
     createRecipe,

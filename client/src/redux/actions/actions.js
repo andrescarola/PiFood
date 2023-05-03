@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 export const GET_RECIPES = 'GET_RECIPES';
 export const GET_RECIPES_BY_TITLE = 'GET_RECIPES_BY_TITLE';
 export const GET_RECIPE_DETAIL = 'GET_RECIPE_DETAIL';
@@ -8,7 +7,6 @@ export const FILTER_RECIPES_BY_DIETS = 'FILTER_RECIPES_BY_DIETS';
 export const FILTER_RECIPES_BY_ORIGIN = 'FILTER_RECIPES_BY_ORIGIN';
 export const SORT_BY_TITLE = 'SORT_BY_TITLE';
 export const SORT_BY_HEALTHSCORE = 'SORT_BY_HEALTHSCORE';
-
 
 export const getRecipes = () => {
     return async function (dispatch) {
@@ -52,7 +50,6 @@ export const getRecipeDetail = (id) => {
         }
     }
 };
-
 
 export const getDiets = () => {
     return async function (dispatch) {
