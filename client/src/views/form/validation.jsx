@@ -41,7 +41,7 @@ const validate = (form) => {
         errors.image = 'Please provide an URL to upload a photo.'
 
     } else if (!isValidUrl && !isValidFile) {
-        errors.image = `Please provide a valid image URL or file extension ('.jpg. / .jpeg / .png / .gif)`
+        errors.image = 'Please provide a valid image URL or file extension (.jpg. / .jpeg / .png / .gif)'
     } else {
         errors.image = ''
     };
